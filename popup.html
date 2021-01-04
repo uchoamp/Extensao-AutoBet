@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Auto bet</title>
+    <style>
+        body {
+            display: flex;
+	        justify-content: center;
+	        flex-direction: column;
+	        height: 100px;
+            text-align: center;
+        }
+
+        .espaca{
+            margin-top: 0.5rem;
+        }
+
+        .button {
+            transition-duration: 0.3s;
+            border: 1px solid black;
+            font-size: 14px;
+            border-radius: 4px;
+            background-color: rgb(9, 255, 0);
+            }
+
+        #btn:hover {
+                background-color: #4CAF50; /* Green */
+                color: white;
+                border: 1px solid black;
+                border-radius: 4px;
+            }
+        #stop{
+            background-color: rgb(255, 0, 0);
+            color: black;
+            
+
+        } 
+        #stop:hover {
+                background-color: rgb(233, 67, 67); /* Green */
+                color: white;
+                border: 1px solid black;
+                border-radius: 4px;
+            }
+
+
+        
+    </style>
+    <script src="popup.js"></script>
+</head>
+<body>
+    <label for="qbets">Quantidade de bets</label>
+    <input class="espaca" type="number"  min="1" name="qbets" placeholder="1" id="qbets">
+    <button class="espaca button" id="btn">Apostar</button>
+    <button class="espaca button" id="stop">Parar</button>
+</body>
+
+</html>
