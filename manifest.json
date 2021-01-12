@@ -3,9 +3,14 @@
     "description" : "",
     "version" : "1.0",
     "manifest_version" : 2,
+    "icons":{
+    	"32":"icon.png",
+    	"72": "icon.png"
+    },
     "browser_action" : {
         "default_title" : "Auto BET",
-        "default_popup": "popup.html" }
+        "default_popup": "popup.html"
+         }
     ,
     "permissions": [
             "activeTab",
