@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function(){
   document.querySelector("#stop").addEventListener("click", ()=>{
 
   chrome.tabs.executeScript({
-    code: "clearInterval(interval); clearInterval(interval1);"
+    code: "clearInterval(interval);"
   });
 
   });
