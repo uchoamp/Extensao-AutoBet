@@ -20,7 +20,6 @@ document.addEventListener("DOMContentLoaded", function(){
 
     let quantBet = inputQuantBets.value;
 
-    quantBet = quantBet/100
 
     chrome.tabs.executeScript({
       code: "var quantBet = "+quantBet+";"
