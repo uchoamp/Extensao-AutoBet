@@ -1,21 +1,36 @@
 document.addEventListener("DOMContentLoaded", function(){
+ 
 
-  document.querySelector("#btn").addEventListener("click", function(){
+  const inputQuantBets = document.querySelector("#qbets");
+  const btnBet = document.querySelector("#btnBet");
 
-    var quantBet = document.querySelector("#qbets").value;
+
+  inputQuantBets.oninput = ()=>{
+    if(inputQuantBets.value){
+      btnBet.removeAttribute("disabled");
+    }else{
+      btnBet.setAttribute("disabled", "true");
+    }
+  }
+
+
+  btnBet.addEventListener("click", function(){
+    
+    this.setAttribute("disabled", "true");
+
+    let quantBet = inputQuantBets.value;
 
     quantBet = quantBet/100
 
-    
     chrome.tabs.executeScript({
       code: "var quantBet = "+quantBet+";"
     });
+
     chrome.tabs.executeScript({
-      file: 'autoCod.js'
+      file: 'inject.js'
 
     });
   
-    
 
   })
 
@@ -24,9 +39,6 @@ document.addEventListener("DOMContentLoaded", function(){
   chrome.tabs.executeScript({
     code: "clearInterval(interval); clearInterval(interval1);"
   });
-
-
-
 
   });
 
