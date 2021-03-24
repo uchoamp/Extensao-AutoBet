@@ -20,16 +20,15 @@ document.addEventListener("DOMContentLoaded", function(){
 
     let quantBet = inputQuantBets.value;
 
-
     chrome.tabs.executeScript({
       code: "var quantBet = "+quantBet+";"
     });
 
     chrome.tabs.executeScript({
       file: 'inject.js'
-
     });
-  
+
+    window.close();
 
   })
 

@@ -1,4 +1,3 @@
-
 var interval = setInterval(() => {
 
     let odd = document.getElementById("mbet-FOURFOLD-1-real-tdo");
@@ -20,8 +19,8 @@ var interval = setInterval(() => {
             }else{
                 repete.click();
             }
-            
         }
+        console.log(quantBet)
     }
 
 }, 500);
