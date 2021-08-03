@@ -1,43 +1,34 @@
-document.addEventListener("DOMContentLoaded", function(){
- 
+document.addEventListener("DOMContentLoaded", function () {
+    const inputQuantBets = document.querySelector("#qbets");
+    const btnBet = document.querySelector("#btnBet");
 
-  const inputQuantBets = document.querySelector("#qbets");
-  const btnBet = document.querySelector("#btnBet");
+    inputQuantBets.oninput = () => {
+        if (inputQuantBets.value) {
+            btnBet.removeAttribute("disabled");
+        } else {
+            btnBet.setAttribute("disabled", "true");
+        }
+    };
 
+    btnBet.addEventListener("click", function () {
+        this.setAttribute("disabled", "true");
 
-  inputQuantBets.oninput = ()=>{
-    if(inputQuantBets.value){
-      btnBet.removeAttribute("disabled");
-    }else{
-      btnBet.setAttribute("disabled", "true");
-    }
-  }
+        let quantBet = inputQuantBets.value;
 
+        chrome.tabs.executeScript({
+            code: "var quantBet = " + quantBet + ";",
+        });
 
-  btnBet.addEventListener("click", function(){
-    
-    this.setAttribute("disabled", "true");
+        chrome.tabs.executeScript({
+            file: "inject.js",
+        });
 
-    let quantBet = inputQuantBets.value;
-
-    chrome.tabs.executeScript({
-      code: "var quantBet = "+quantBet+";"
+        window.close();
     });
 
-    chrome.tabs.executeScript({
-      file: 'inject.js'
+    document.querySelector("#stop").addEventListener("click", () => {
+        chrome.tabs.executeScript({
+            code: "quantBet = 0;",
+        });
     });
-
-    window.close();
-
-  })
-
-  document.querySelector("#stop").addEventListener("click", ()=>{
-
-  chrome.tabs.executeScript({
-    code: "clearInterval(interval);"
-  });
-
-  });
-
-})
+});
