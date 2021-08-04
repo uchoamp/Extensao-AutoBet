@@ -1,17 +1,19 @@
 {
-  "name": "Auto 1 Cent Bet",
-  "description": "",
-  "version": "1.0",
-  "manifest_version": 2,
-  "icons": {
-    "32": "img/icon.png",
-    "72": "img/icon.png"
-  },
-  "browser_action": {
-    "default_title": "Auto BET",
-    "default_popup": "popup.html"
-  },
-  "permissions": [
-    "tabs", "storage", "https://*.betfair.com/*"
-  ]
+    "name": "Auto 1 Cent Bet",
+    "description": "",
+    "version": "1.0",
+    "manifest_version": 3,
+    "icons": {
+        "32": "img/icon.png",
+        "72": "img/icon.png"
+    },
+    "action": {
+        "default_title": "Auto BET",
+        "default_popup": "popup.html"
+    },
+    "background": {
+        "service_worker": "background.js"
+    },
+    "permissions": ["tabs", "scripting"],
+    "host_permissions": ["https://*.betfair.com/*"]
 }

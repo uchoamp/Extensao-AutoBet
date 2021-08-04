@@ -3,92 +3,19 @@
 
 <head>
     <title>Auto bet</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            text-decoration: none;
-            outline: none;
-        }
 
-        body {
-            padding: 0.7rem 0.5rem;
-            display: flex;
-            justify-content: center;
-            flex-direction: column;
-            min-width: 200px;
-            text-align: center;
-            background-color: #ffb80c;
-        }
-
-        .espaca {
-            margin-top: 0.5rem;
-        }
-
-        label {
-            font-weight: 600;
-        }
-
-        input {
-            padding: 2px 1px;
-            outline: none;
-            border: 0.5px solid rgb(252, 252, 252);
-            border-radius: 2px;
-            background-color: rgb(252, 252, 252);
-        }
-
-        input:focus {
-            box-shadow: 0 0 0.3em rgb(0, 81, 255);
-        }
-
-        button {
-            transition-duration: 0.1s;
-            font-size: 14px;
-            border-radius: 2px;
-            background-color: rgb(9, 255, 0);
-            cursor: pointer;
-            outline: none;
-            border: none;
-            padding: 2px 0;
-        }
-
-
-        #btnBet:not(:disabled):hover {
-            background-color: #4CAF50;
-            /* Green */
-            color: white;
-            border-radius: 4px;
-        }
-
-        #btnBet:disabled {
-            background-color: rgb(131, 131, 131);
-            color: rgb(177, 177, 177);
-            border-color: rgb(131, 131, 131);
-        }
-
-        #stop {
-            background-color: rgb(253, 31, 31);
-            color: black;
-
-        }
-
-        #stop:hover {
-            background-color: rgb(170, 6, 6);
-            /* Green */
-            color: white;
-            border-radius: 4px;
-        }
-    </style>
+    <link rel="stylesheet" href="/css/style.css">
 
 </head>
 
 <body>
     <label for="qbets">QUANTIDADE DE APOSTAS</label>
-    <input class="espaca" type="number" min="1" name="qbets" value="1" autofocus id="qbets">
+    <input class="espaca" type="number" min="1" name="qbets" value="1" autofocus id="quant-bets">
+    <label for="qbets">MIN ODD</label>
+    <input class="espaca" type="number" min="1.50" name="qbets" value="1.50" step="0.01" id="min-odd">
     <button class="espaca button" id="btnBet">Apostar</button>
     <button class="espaca button" id="stop">Parar</button>
 </body>
-    <script src="popup.js"></script>
+    <script src="/js/popup.js"></script>
 
 </html>

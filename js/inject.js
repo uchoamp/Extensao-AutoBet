@@ -1,13 +1,12 @@
-function bet() {
+async function bet() {
     let odd = document.getElementById("mbet-FOURFOLD-1-real-tdo");
-
+    
     if (quantBet <= 0) {
         return 0;
     }
-
     if (odd) {
         odd = odd.value;
-        if (odd > 1.5) {
+        if (odd > minOdd) {
             document.querySelector("#mbet-FOURFOLD-1-real-stake").value =
                 "0.01";
             document
