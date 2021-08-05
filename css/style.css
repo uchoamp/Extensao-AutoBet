@@ -17,22 +17,41 @@ body {
     background-color: #ffb80c;
 }
 
-.espaca {
-    margin-bottom: 0.5rem;
+input, button, select{
+    width: 125px;
+    margin: 2px;
 }
 
+.box{
+    display: flex;
+    justify-content: center;
+}
+
+hr{
+    border: 1px solid rgb(172, 172, 172);
+    margin: 10px 0;
+}
+.content{
+    flex: 1;
+}
+
+
 label {
+    width: 100%;
     font-weight: 600;
     margin-bottom: 0.2rem;
     margin-top: 0.2rem;
 }
 
-input {
+input, select {
     padding: 2px 1px;
     outline: none;
     border: 0.5px solid rgb(252, 252, 252);
     border-radius: 2px;
     background-color: rgb(252, 252, 252);
+}
+select{
+    padding: 1px;
 }
 
 input:focus {

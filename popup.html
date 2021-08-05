@@ -1,21 +1,75 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <title>Auto bet</title>
 
-<head>
-    <title>Auto bet</title>
+        <link rel="stylesheet" href="/css/style.css" />
+    </head>
 
-    <link rel="stylesheet" href="/css/style.css">
+    <body>
+        <div class="box">
+            <div class="content">
+                <label for="qbets">APOSTAS</label>
+                <input
+                    type="number"
+                    min="1"
+                    name="qbets"
+                    value="1"
+                    autofocus
+                    id="quant-bets"
+                />
+            </div>
+            <div class="content">
+                <label for="qbets">MIN ODD</label>
+                <input
+                    type="number"
+                    min="1.50"
+                    name="qbets"
+                    value="1.50"
+                    step="0.01"
+                    id="min-odd"
+                />
+            </div>
+        </div>
 
-</head>
+        <div class="box">
+            <div class="content">
+                <button class="button" id="btnBet">Apostar</button>
+            </div>
+            <div class="content">
+                <button class="button" id="stop">Parar</button>
+            </div>
+        </div>
 
-<body>
-    <label for="qbets">QUANTIDADE DE APOSTAS</label>
-    <input class="espaca" type="number" min="1" name="qbets" value="1" autofocus id="quant-bets">
-    <label for="qbets">MIN ODD</label>
-    <input class="espaca" type="number" min="1.50" name="qbets" value="1.50" step="0.01" id="min-odd">
-    <button class="espaca button" id="btnBet">Apostar</button>
-    <button class="espaca button" id="stop">Parar</button>
-</body>
+        <hr />
+
+        <div class="box">
+            <div class="content">
+                <label for="multiple">MULTIPLE</LABEL>
+                <select
+                    name="multiple"
+                    id="multiple"
+                >
+                    <option value="0">0</option>
+                </select>
+            </div>
+
+            <div class="content">
+                <label for="num-co">NUM CASH-OUTS</label>
+                <input
+                    type="number"
+                    min="0"
+                    name="num-co"
+                    value="0"
+                    step="1"
+                    max="0"
+                    id="num-co"
+                />
+            </div>
+        </div>
+        <div class="box">
+            <button id="cash-out">Cash-out</button>
+        </div>
+    </body>
     <script src="/js/popup.js"></script>
-
 </html>
