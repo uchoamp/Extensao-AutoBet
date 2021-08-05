@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -5,6 +7,7 @@
     text-decoration: none;
     outline: none;
     border: none;    
+    font-family: 'Noto Sans TC', sans-serif;
 }
 
 body {
@@ -64,6 +67,11 @@ button {
     background-color: rgb(9, 255, 0);
     cursor: pointer;
     padding: 2px 0;
+    transition: 0.3s;
+}
+button:hover{
+    transform: scale(1.03);
+    box-shadow: 0 0 2px rgb(118, 119, 119);
 }
 
 #btnBet:not(:disabled):hover {
@@ -85,4 +93,16 @@ button {
 #stop:hover {
     background-color: rgb(170, 6, 6);
     color: white;
+}
+
+#co-container{
+    display: none;
+}
+
+#cash-out{
+    background-color: rgb(21, 18, 214);
+    color: white;
+}
+#cash-out:hover{
+    background-color: rgb(15, 108, 230);
 }

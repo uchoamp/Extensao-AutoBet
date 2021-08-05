@@ -36,8 +36,7 @@ function getMultiples() {
         j++;
         conca = "";
     }
-    result[i] =
-        i > 0 ? { start: result[i - 1]["end"], end: j } : { start: 0, end: j };
+    if(j > 0) result[i] = i > 0 ? { start: result[i - 1]["end"], end: j } : { start: 0, end: j };
 
     return result;
 }
@@ -118,6 +117,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     });
 
     if (tab.url === "https://www.betfair.com/sport/cashout") {
+        document.getElementById("co-container").style.display = "initial";
         chrome.scripting.executeScript(
             {
                 target: { tabId: tab.id },
@@ -139,6 +139,8 @@ document.addEventListener("DOMContentLoaded", async function () {
                 }
                 if (intervals.length > 0) {
                     multiple.onchange();
+                }else{
+                    document.getElementById("co-container").style.display = "none";
                 }
             }
         );
