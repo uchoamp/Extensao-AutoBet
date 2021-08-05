@@ -25,7 +25,7 @@ function getMultiples() {
         btns = legs.getElementsByClassName("leg-header");
 
         for (let btn of btns) {
-            tl = btn.title;
+            tl = btn.innerText;
 
             tl = tl.slice(0, tl.match(/@/).index - 1);
             conca += tl;
@@ -174,6 +174,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 target: { tabId: tab.id },
                 function: injectCashOut,
             });
+            window.close();
         };
     }
 });
