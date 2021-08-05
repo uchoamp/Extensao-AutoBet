@@ -1,5 +1,11 @@
 var intervals = [];
 
+function compareUrl(url) {
+    if (!url.match(/betfair\.com/)) {
+        window.close();
+    }
+}
+
 async function getCurrentTab() {
     let queryOptions = { active: true, currentWindow: true };
     let [tab] = await chrome.tabs.query(queryOptions);
@@ -9,17 +15,18 @@ async function getCurrentTab() {
 function getMultiples() {
     let result = [];
     let i = (j = 0);
-    let co_container = document.getElementsByClassName(
-        "cashout-match-container"
-    );
     let legs, btns, tl;
     let conca = (current_conca = "");
 
+    let co_container = getOrderedCashoutContainer();
+
     for (const multiple of co_container) {
         legs = multiple.getElementsByClassName("bet-legs")[0];
-        btns = legs.getElementsByTagName("button");
+        btns = legs.getElementsByClassName("leg-header");
+
         for (let btn of btns) {
             tl = btn.title;
+
             tl = tl.slice(0, tl.match(/@/).index - 1);
             conca += tl;
         }
@@ -36,21 +43,25 @@ function getMultiples() {
         j++;
         conca = "";
     }
-    if(j > 0) result[i] = i > 0 ? { start: result[i - 1]["end"], end: j } : { start: 0, end: j };
-
+    if (j > 0)
+        result[i] =
+            i > 0
+                ? { start: result[i - 1]["end"], end: j }
+                : { start: 0, end: j };
     return result;
 }
 
-function injectCashOut(i, end){
-    if(i > end){
-        return
+function injectCashOut(i, end) {
+
+    if (i > end) {
+        return;
     }
-    document.getElementsByClassName("cashout-button")[i].click();
+    btns_to_cash_out[i].click();
     i++;
 
-    setTimeout(function (){
+    setTimeout(function () {
         injectCashOut(i, end);
-    }, 3000)
+    }, 1000);
 }
 
 function setBets(quantBet, minOdd) {
@@ -62,16 +73,25 @@ function selectChange() {
     const numCo = document.getElementById("num-co");
 
     let interval = intervals[this.value - 1];
-    numCo.value = (numCo.max = interval.end - interval.start);
+    numCo.value = numCo.max = interval.end - interval.start;
     numCo.min = 1;
 }
 
+async function initial() {
+    const tab = await getCurrentTab();
+    compareUrl(tab.url);
+    chrome.scripting.executeScript({
+        target: { tabId: tab.id },
+        files: ["/js/utils.js"],
+    });
+    return tab;
+}
+
 document.addEventListener("DOMContentLoaded", async function () {
+    const tab = await initial();
     const inputQuantBets = document.querySelector("#quant-bets");
     const btnBet = document.querySelector("#btnBet");
-    const tab = await getCurrentTab();
     const inputMinOdd = document.getElementById("min-odd");
-
     const multiple = document.getElementById("multiple");
     const numCo = document.getElementById("num-co");
     const btnCashOut = document.getElementById("cash-out");
@@ -139,22 +159,21 @@ document.addEventListener("DOMContentLoaded", async function () {
                 }
                 if (intervals.length > 0) {
                     multiple.onchange();
-                }else{
-                    document.getElementById("co-container").style.display = "none";
+                } else {
+                    document.getElementById("co-container").style.display =
+                        "none";
                 }
             }
         );
-            
-        btnCashOut.onclick = function (){
-            let interval  = intervals[multiple.value-1];
+
+        btnCashOut.onclick = function () {
+            let interval = intervals[multiple.value - 1];
             let end = interval.start + numCo.value - 1;
             chrome.scripting.executeScript({
-                    args: [interval.start, end],
-                    target: { tabId: tab.id },
-                    function: injectCashOut,
-            })
-        }
+                args: [interval.start, end],
+                target: { tabId: tab.id },
+                function: injectCashOut,
+            });
+        };
     }
-
-
 });
