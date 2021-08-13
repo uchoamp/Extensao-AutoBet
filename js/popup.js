@@ -15,20 +15,18 @@ async function getCurrentTab() {
 function getMultiples() {
     let result = [];
     let i = (j = 0);
-    let legs, btns, tl;
+    let matchs, ancors, lk_bet;
     let conca = (current_conca = "");
 
     let co_container = getOrderedCashoutContainer();
 
     for (const multiple of co_container) {
-        legs = multiple.getElementsByClassName("bet-legs")[0];
-        btns = legs.getElementsByClassName("leg-header");
+        matchs = multiple.querySelector(".bet-legs");
+        ancors =  matchs.querySelectorAll("a.ui-nav.ui-top");
 
-        for (let btn of btns) {
-            tl = btn.innerText;
-
-            tl = tl.slice(0, tl.match(/@/).index - 1);
-            conca += tl;
+        for (let a of ancors) {
+            lk_bet = a.getAttribute("href");
+            conca += lk_bet;
         }
         if (conca != current_conca) {
             current_conca = conca;

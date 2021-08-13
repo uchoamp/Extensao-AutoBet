@@ -1,9 +1,10 @@
-function bet() {
+async function bet() {
     let odd = document.getElementById("mbet-FOURFOLD-1-real-tdo");
     
     if (quantBet <= 0) {
         return 0;
     }
+
     if (odd) {
         odd = odd.value;
         if (odd > minOdd) {
