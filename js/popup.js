@@ -166,7 +166,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         btnCashOut.onclick = function () {
             let interval = intervals[multiple.value - 1];
-            let end = interval.start + numCo.value - 1;
+            let end = Number(interval.start) + Number(numCo.value) - 1;
             chrome.scripting.executeScript({
                 args: [interval.start, end],
                 target: { tabId: tab.id },
