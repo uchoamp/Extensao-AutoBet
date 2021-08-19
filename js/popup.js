@@ -46,6 +46,7 @@ function getMultiples() {
             i > 0
                 ? { start: result[i - 1]["end"], end: j }
                 : { start: 0, end: j };
+
     return result;
 }
 
@@ -54,6 +55,9 @@ function injectCashOut(i, end) {
     if (i > end) {
         return;
     }
+    chrome.storage.local.get(['btns_to_cash_out'], (result)=>{
+        result[i].click();
+    });
     btns_to_cash_out[i].click();
     i++;
 

@@ -24,12 +24,9 @@ function getOrderedCashoutContainer() {
             };
         }
     } else {
-        co_container = right_multiples.getElementsByClassName(
-            "cashout-match-container"
-        )[0];
+        if(right_multiples)co_container = right_multiples.getElementsByClassName("cashout-match-container"  )[0];
     }
     return co_container;
 }
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-  }
+
+chrome.storage.local.set({"btns_to_cash_out": btns_to_cash_out});
