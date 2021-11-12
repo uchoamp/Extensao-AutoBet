@@ -112,5 +112,5 @@ function injectCashOut(i, end) {
 
     setTimeout(function () {
         injectCashOut(i, end);
-    }, 1000);
+    }, 500);
 }

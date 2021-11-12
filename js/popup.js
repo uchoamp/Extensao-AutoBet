@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         chrome.storage.local.set({ quantBet: quantBet });
     });
 
-    if (tab.url === "https://www.betfair.com/sport/cashout") {
+    if (tab.url.startsWith("https://www.betfair.com/sport/cashout")) {
         document.getElementById("co-container").style.display = "initial";
         injectGetOrderedCashoutContainer(tab);
         chrome.scripting.executeScript(
