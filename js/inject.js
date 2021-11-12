@@ -3,7 +3,7 @@ async function bet(data) {
     quantBet = data.quantBet;
     minOdd = data.minOdd;
     let odd = document.getElementById("mbet-FOURFOLD-1-real-tdo");
-    
+
     if (quantBet <= 0) {
         return 0;
     }
@@ -32,6 +32,7 @@ async function bet(data) {
 function getOrderedCashoutContainer(){
     this.btns_to_cash_out = [];
     this.co_container = [];
+
     let right_multiples = document.getElementsByClassName(
         "cashout-match-list-1"
     )[0];
@@ -54,7 +55,7 @@ function getOrderedCashoutContainer(){
             };
         }
     } else {
-        if(right_multiples)co_container = right_multiples.getElementsByClassName("cashout-match-container"  )[0];
+        if(right_multiples)co_container = right_multiples.getElementsByClassName("cashout-match-container")[0];
     }
 }
 
@@ -70,6 +71,8 @@ function getMultiples() {
 
     for (const multiple of co_container) {
         matchs = multiple.querySelector(".bet-legs");
+        if(!matchs) continue;
+
         ancors =  matchs.querySelectorAll("a.ui-nav.ui-top");
 
         for (let a of ancors) {
